@@ -35,10 +35,10 @@ export function ShiftAnalysis() {
       <ResponsiveContainer width="100%" height={140}>
         <BarChart data={data} margin={{ top: 4, right: 4, left: -24, bottom: 0 }} barSize={48}>
           <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" vertical={false} />
-          <XAxis dataKey="label" tick={{ fill: '#6b7280', fontSize: 10 }} tickLine={false} axisLine={false} />
-          <YAxis domain={[0, 100]} tick={{ fill: '#4b5563', fontSize: 10 }} tickLine={false} axisLine={false} />
+          <XAxis dataKey="label" tick={{ fill: '#8b9db3', fontSize: 10 }} tickLine={false} axisLine={false} />
+          <YAxis domain={[0, 100]} tick={{ fill: '#8b9db3', fontSize: 10 }} tickLine={false} axisLine={false} />
           <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.03)' }} />
-          <Bar dataKey="score" radius={[4, 4, 0, 0]}>
+          <Bar isAnimationActive={false} dataKey="score" radius={[4, 4, 0, 0]}>
             {data.map((entry, i) => (
               <Cell key={i} fill={entry.color} fillOpacity={0.85} />
             ))}

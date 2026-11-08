@@ -1,6 +1,7 @@
 import { Activity, ChevronDown, Download, Check } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
-import { useTerminal, TERMINALS, type TerminalId } from '../context/TerminalContext';
+import { useTerminal, TERMINALS, type TerminalId } from '../context/terminalState';
+import { kpis, recentTrucks } from '../data/terminalData';
 
 export function Header() {
   const { terminal, setTerminalId } = useTerminal();
@@ -23,6 +24,24 @@ export function Header() {
   }, []);
 
   function handleExport() {
+    const rows = [
+      ['PortPulse demonstratierapport', terminal.name],
+      ['Databron', 'Synthetische portfolio-scenario’s'],
+      ['Gem. wachttijd (min)', Math.round(kpis.avgWaitMin * (1 + (terminal.factor - 1) * 0.6))],
+      ['Dead time (uur)', Math.round(kpis.deadTimeHours * terminal.factor)],
+      ['Kosten scenario (EUR)', Math.round(kpis.costToday * terminal.factor)],
+      [],
+      ['Voorbeeld-events (gedeeld tussen terminals)'],
+      ['Kenteken', 'Gate', 'Contractor', 'Wachttijd (min)', 'Status'],
+      ...recentTrucks.map(t => [t.plate, t.gate, t.contractor, t.waitMin, t.status]),
+    ];
+    const csv = rows.map(row => row.map(value => `"${String(value).replace(/"/g, '""')}"`).join(',')).join('\r\n');
+    const url = URL.createObjectURL(new Blob(['\uFEFF', csv], { type: 'text/csv;charset=utf-8' }));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `portpulse-${terminal.id}-demo.csv`;
+    link.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
     setExported(true);
     setTimeout(() => setExported(false), 2000);
   }
@@ -43,15 +62,17 @@ export function Header() {
           <span className="hidden sm:block text-slate-700 select-none">·</span>
 
           {/* Terminal dropdown */}
-          <div ref={dropRef} className="relative hidden sm:block">
+          <div ref={dropRef} className="relative">
             <button
               onClick={() => setOpen(o => !o)}
+              aria-expanded={open}
+              aria-label="Selecteer terminal"
               className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors py-1"
             >
               <span className="text-xs font-semibold text-cyan-500 mr-1 bg-cyan-500/10 px-1.5 py-0.5 rounded">
                 {terminal.short}
               </span>
-              {terminal.name}
+              <span className="hidden lg:inline">{terminal.name}</span>
               <ChevronDown size={13} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
             </button>
 
@@ -78,18 +99,20 @@ export function Header() {
         {/* Right */}
         <div className="flex items-center gap-2 sm:gap-4">
           <span className="hidden md:block text-[11px] text-slate-600">
-            Bijgewerkt {seconds}s geleden
+            Demo actief · {seconds}s
           </span>
           <button
             onClick={handleExport}
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs text-slate-400 hover:text-white border border-white/10 hover:border-white/20 rounded-lg transition-all"
+            className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-slate-400 hover:text-white border border-white/10 hover:border-white/20 rounded-lg transition-all"
+            aria-label="Exporteer demonstratierapport als CSV"
           >
             {exported ? <Check size={12} className="text-green-400" /> : <Download size={12} />}
-            {exported ? 'Geëxporteerd' : 'Exporteer rapport'}
+            <span className="hidden sm:inline">{exported ? 'Geëxporteerd' : 'Exporteer rapport'}</span>
+            <span className="sm:hidden">CSV</span>
           </button>
           <div className="flex items-center gap-1.5 px-2.5 py-1 bg-green-500/10 rounded-full border border-green-500/20">
             <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-[11px] text-green-400 font-semibold tracking-wide">LIVE</span>
+            <span className="text-[11px] text-green-400 font-semibold tracking-wide">DEMO</span>
           </div>
         </div>
       </div>

@@ -24,12 +24,12 @@ function Footer() {
         <span>Dead Time Analytics voor haventerminals</span>
         <span>·</span>
         <a
-          href="https://portpulse-blue.vercel.app"
+          href="https://phlppgdfry.github.io/portpulse/"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-cyan-400 transition-colors"
         >
-          portpulse-blue.vercel.app
+          Open portfolio-demo
         </a>
       </div>
       <p className="text-[11px] text-slate-700">
@@ -96,6 +96,10 @@ export default function App() {
         <TabNav active={activeTab} onSelect={setActiveTab} />
 
         <main className="max-w-[1600px] mx-auto px-4 sm:px-6 py-6 space-y-4 relative">
+          <section className="portfolio-intro">
+            <div><h1>Elke minuut telt aan de gate.</h1><p>Bekijk wachttijden, ontdek knelpunten en vergelijk de impact per terminal.</p></div>
+            <details><summary>Over deze demo</summary><p>Zelfstandig portfolio van Philippe Godfroy. KPI’s en terminalfactoren zijn synthetisch; truckevents zijn gedeelde voorbeelden. AI Insights bevat vooraf geschreven aanbevelingen. Er is geen koppeling met een terminal of AI-model.</p><a href="https://github.com/phlppgdfry/portpulse">Bekijk de broncode en aanpak</a></details>
+          </section>
           {activeTab === 'dashboard'   && <DashboardTab />}
           {activeTab === 'analyse'     && <AnalyseTab />}
           {activeTab === 'contractors' && <ContractorsTab />}

@@ -37,14 +37,14 @@ export function WeekTrendChart() {
       <ResponsiveContainer width="100%" height={220}>
         <ComposedChart data={weekTrendData} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" vertical={false} />
-          <XAxis dataKey="day" tick={{ fill: '#6b7280', fontSize: 11 }} tickLine={false} axisLine={false} />
-          <YAxis yAxisId="trucks" orientation="left"  tick={{ fill: '#4b5563', fontSize: 10 }} tickLine={false} axisLine={false} />
-          <YAxis yAxisId="score"  orientation="right" tick={{ fill: '#4b5563', fontSize: 10 }} tickLine={false} axisLine={false} domain={[0, 100]} />
+          <XAxis dataKey="day" tick={{ fill: '#8b9db3', fontSize: 11 }} tickLine={false} axisLine={false} />
+          <YAxis yAxisId="trucks" orientation="left"  tick={{ fill: '#8b9db3', fontSize: 10 }} tickLine={false} axisLine={false} />
+          <YAxis yAxisId="score"  orientation="right" tick={{ fill: '#8b9db3', fontSize: 10 }} tickLine={false} axisLine={false} domain={[0, 100]} />
           <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.03)' }} />
           <Legend wrapperStyle={{ display: 'none' }} />
-          <Bar    yAxisId="trucks" dataKey="trucks"  name="Trucks"     fill="#1d4ed8" fillOpacity={0.5} radius={[3,3,0,0]} barSize={32} />
-          <Line   yAxisId="score"  dataKey="avgWait" name="Wachttijd"  stroke="#f59e0b" strokeWidth={2} dot={{ fill: '#f59e0b', r: 3 }} />
-          <Line   yAxisId="score"  dataKey="score"   name="Score"      stroke="#22c55e" strokeWidth={2} dot={{ fill: '#22c55e', r: 3 }} />
+          <Bar isAnimationActive={false}    yAxisId="trucks" dataKey="trucks"  name="Trucks"     fill="#1d4ed8" fillOpacity={0.5} radius={[3,3,0,0]} barSize={32} />
+          <Line isAnimationActive={false}   yAxisId="score"  dataKey="avgWait" name="Wachttijd"  stroke="#f59e0b" strokeWidth={2} dot={{ fill: '#f59e0b', r: 3 }} />
+          <Line isAnimationActive={false}   yAxisId="score"  dataKey="score"   name="Score"      stroke="#22c55e" strokeWidth={2} dot={{ fill: '#22c55e', r: 3 }} />
         </ComposedChart>
       </ResponsiveContainer>
 

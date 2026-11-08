@@ -1,7 +1,7 @@
 import { Clock, BarChart2, Euro, Truck, Zap, TrendingUp, TrendingDown } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { kpis } from '../data/terminalData';
-import { useTerminal } from '../context/TerminalContext';
+import { useTerminal } from '../context/terminalState';
 
 interface CardProps {
   label: string;
@@ -27,7 +27,7 @@ function KpiCard({ label, value, sub, icon, iconBg, goodWhenPositive, delta, red
         <p className="text-xs text-slate-500 mt-0.5">{sub}</p>
       </div>
       <div className={`flex items-center gap-1 text-xs font-medium ${isGood ? 'text-green-400' : 'text-red-400'}`}>
-        {isGood ? <TrendingDown size={12} /> : <TrendingUp size={12} />}
+        {delta < 0 ? <TrendingDown size={12} /> : <TrendingUp size={12} />}
         <span>{delta > 0 ? '+' : ''}{delta}% vs gisteren</span>
       </div>
     </div>

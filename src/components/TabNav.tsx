@@ -15,13 +15,14 @@ export function TabNav({ active, onSelect }: Props) {
   return (
     <div className="border-b border-white/5 bg-[#0b0d16]/80 backdrop-blur sticky top-14 z-40">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6">
-        <div className="flex gap-0">
+        <nav aria-label="Dashboard onderdelen" className="flex gap-0 overflow-x-auto">
           {TABS.map(tab => {
             const isActive = tab.id === active;
             return (
               <button
                 key={tab.id}
                 onClick={() => onSelect(tab.id)}
+                aria-current={isActive ? 'page' : undefined}
                 className={`relative flex items-center gap-2 px-4 py-3.5 text-sm font-medium transition-colors ${
                   isActive
                     ? 'text-white'
@@ -41,7 +42,7 @@ export function TabNav({ active, onSelect }: Props) {
               </button>
             );
           })}
-        </div>
+        </nav>
       </div>
     </div>
   );

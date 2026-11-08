@@ -1,5 +1,7 @@
 <div align="center">
 
+[![Portfolio demo](https://github.com/phlppgdfry/portpulse/actions/workflows/portfolio-pages.yml/badge.svg)](https://github.com/phlppgdfry/portpulse/actions/workflows/portfolio-pages.yml)
+
 <img src="public/favicon.svg" width="72" alt="PortPulse logo" />
 
 # PortPulse
@@ -8,11 +10,28 @@
 
 **Maak verborgen inefficiëntie realtime zichtbaar — en weet exact hoeveel het kost.**
 
-[![Live Demo](https://img.shields.io/badge/▶%20Open%20Live%20Demo-portpulse--blue.vercel.app-06b6d4?style=for-the-badge&logoColor=white)](https://portpulse-blue.vercel.app)
+[![Live Demo](https://img.shields.io/badge/▶%20Open%20Live%20Demo-GitHub%20Pages-06b6d4?style=for-the-badge&logoColor=white)](https://phlppgdfry.github.io/portpulse/)
 &nbsp;
 [![GitHub](https://img.shields.io/badge/Broncode-GitHub-1f2937?style=for-the-badge&logo=github&logoColor=white)](https://github.com/phlppgdfry/portpulse)
 
 </div>
+
+---
+
+## Interactive portfolio
+
+**[Open the demo](https://phlppgdfry.github.io/portpulse/)** · [Two-minute walkthrough](docs/PORTFOLIO.md) · [Verification notes](docs/VERIFICATION.md)
+
+No credentials required. The public demo uses synthetic sample data; it is an
+independent portfolio project, not an operating terminal or ERP environment.
+
+![Actual desktop demo](docs/screenshots/desktop.png)
+
+<details><summary>Mobile preview</summary>
+
+<img src="docs/screenshots/mobile.png" width="300" alt="Mobile view of the working portfolio demo" />
+
+</details>
 
 ---
 
@@ -24,7 +43,7 @@ Elke truck die wacht, kost geld. Elke crane die stilstaat, kost geld. Elke shift
 **Het probleem:** iedereen *voelt* de inefficiëntie — maar niemand kan exact meten *waar* de tijd verloren gaat.
 
 Data zit verspreid over Excel, SAP, radio's, papieren, en terminal software. Planners werken reactief.  
-Er is geen centraal overzicht. Geen voorspelling. Geen AI.
+Er is geen centraal overzicht. Geen gedeeld overzicht van knelpunten.
 
 **PortPulse verandert dat.**
 
@@ -52,9 +71,9 @@ Er is geen centraal overzicht. Geen voorspelling. Geen AI.
 - **Zoekfunctie** — filter op contractor naam
 - **Automatische tip** — kostenverschil tussen beste en slechtste contractor berekend
 
-### AI Insights
+### AI Insights (vooraf geschreven demo-aanbevelingen)
 - **Spaaroverzicht** — totaal wekelijks + jaarlijks potentieel per terminal
-- **4 AI-aanbevelingen** — concreet, met impact in euro's en AI-confidence score
+- **4 illustratieve aanbevelingen** — concreet, met impact in euro's en AI-confidence score
   - Kostenbesparing: routing optimalisaties
   - Aandachtspunten: verzwakkende contractors
   - Patroon detectie: structurele pieken
@@ -100,7 +119,8 @@ Open [http://localhost:5173](http://localhost:5173)
 - [ ] Multi-terminal dashboard — vergelijk 2 terminals naast elkaar
 - [ ] Mobiele app — chauffeurs melden events via QR-scan
 - [ ] Email alerts — automatische notificaties bij kritieke bottlenecks
-- [ ] Exporteer rapport — PDF rapportage per shift of week
+- [x] CSV demonstratierapport met terminal-KPI’s en voorbeeld-events
+- [ ] PDF rapportage per shift of week
 
 ---
 

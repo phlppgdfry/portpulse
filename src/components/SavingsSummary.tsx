@@ -1,6 +1,6 @@
 import { TrendingDown, Lightbulb, Euro } from 'lucide-react';
 import { aiInsights } from '../data/terminalData';
-import { useTerminal } from '../context/TerminalContext';
+import { useTerminal } from '../context/terminalState';
 
 export function SavingsSummary() {
   const { terminal } = useTerminal();

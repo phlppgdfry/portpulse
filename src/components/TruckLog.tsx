@@ -47,6 +47,7 @@ export function TruckLog() {
             <Search size={12} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-500" />
             <input
               type="text"
+              aria-label="Zoek truckevents"
               placeholder="Zoek kenteken of contractor..."
               value={search}
               onChange={e => setSearch(e.target.value)}
@@ -71,6 +72,7 @@ export function TruckLog() {
 
           {/* Gate filter */}
           <select
+            aria-label="Filter gate"
             value={gateF}
             onChange={e => setGateF(e.target.value as GateFilter)}
             className="text-xs bg-white/5 border border-white/10 rounded-lg px-2.5 py-1.5 text-slate-400 focus:outline-none focus:border-cyan-500/50 cursor-pointer"

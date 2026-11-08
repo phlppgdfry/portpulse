@@ -47,6 +47,7 @@ export function ContractorTable() {
           <Search size={12} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-500" />
           <input
             type="text"
+            aria-label="Zoek contractors"
             placeholder="Zoek contractor..."
             value={search}
             onChange={e => setSearch(e.target.value)}

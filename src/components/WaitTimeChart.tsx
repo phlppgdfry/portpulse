@@ -54,16 +54,16 @@ export function WaitTimeChart() {
           <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" vertical={false} />
           <XAxis
             dataKey="hour"
-            tick={{ fill: '#4b5563', fontSize: 10 }}
+            tick={{ fill: '#8b9db3', fontSize: 10 }}
             tickLine={false}
             axisLine={false}
             interval={3}
           />
-          <YAxis tick={{ fill: '#4b5563', fontSize: 10 }} tickLine={false} axisLine={false} />
+          <YAxis tick={{ fill: '#8b9db3', fontSize: 10 }} tickLine={false} axisLine={false} />
           <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#374151', strokeWidth: 1 }} />
           <ReferenceLine y={45} stroke="#f59e0b" strokeDasharray="4 3" strokeOpacity={0.5} label={{ value: 'KPI max', fill: '#f59e0b', fontSize: 10, position: 'right' }} />
-          <Area type="monotone" dataKey="avgWait"  stroke="#06b6d4" strokeWidth={2} fill="url(#waitGrad)"  dot={false} />
-          <Area type="monotone" dataKey="trucks"   stroke="#8b5cf6" strokeWidth={1.5} fill="url(#truckGrad)" dot={false} />
+          <Area isAnimationActive={false} type="monotone" dataKey="avgWait"  stroke="#06b6d4" strokeWidth={2} fill="url(#waitGrad)"  dot={false} />
+          <Area isAnimationActive={false} type="monotone" dataKey="trucks"   stroke="#8b5cf6" strokeWidth={1.5} fill="url(#truckGrad)" dot={false} />
         </AreaChart>
       </ResponsiveContainer>
     </div>
