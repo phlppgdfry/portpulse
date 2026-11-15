@@ -151,3 +151,7 @@ Zeebrugge, België
 <div align="center">
   <sub>Gebouwd voor de logistieke cluster van Zeebrugge · Schaalbaar naar Rotterdam, Hamburg, Antwerpen</sub>
 </div>
+
+## Final portfolio release
+
+[Final source snapshot — 15 November 2026](https://github.com/phlppgdfry/portpulse/releases/tag/portfolio-2026-11-15) · [Verification evidence](docs/VERIFICATION.md)

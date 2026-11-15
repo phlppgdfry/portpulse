@@ -1,0 +1,36 @@
+{
+  "name": "portpulse",
+  "url": "https://phlppgdfry.github.io/portpulse/",
+  "tested_route": "https://phlppgdfry.github.io/portpulse/",
+  "checked_at": "2026-11-15T18:57:17.837Z",
+  "title": "PortPulse — Dead Time Analytics",
+  "http_status": 200,
+  "desktop": {
+    "width": 1440,
+    "scroll_width": 1434
+  },
+  "mobile": {
+    "width": 390,
+    "scroll_width": 384
+  },
+  "runtime_errors": [],
+  "status": "passed",
+  "browser": "Chromium via Playwright",
+  "browser_plugin": "unavailable",
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 1040
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "interaction_checks": [
+    "Switch to ICO and verify 37-minute scenario KPI",
+    "Download CSV and verify selected terminal content",
+    "Search contractor NOORD and verify one matching row"
+  ],
+  "scope": "Public synthetic-data portfolio demo. No live terminal or Business Central operations were performed."
+}
