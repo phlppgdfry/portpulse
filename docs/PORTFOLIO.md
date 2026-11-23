@@ -31,3 +31,10 @@ npm run build
 ```
 
 Open the URL printed by Vite. `dist/` is the deployable artifact.
+
+
+## Updated walkthrough — 24 November 2026
+
+Contractor recommendations now compare the visible contractors using observed sample wait times, truck volume and a derived hourly rate. Empty searches explain how to recover; all alert close buttons have accessible names. The comparison is a synthetic scenario, never a guaranteed weekly saving.
+
+![Calculated contractor comparison](screenshots/contractors.png)

@@ -1,13 +1,14 @@
 {
   "name": "portpulse",
   "version": "1.0.0",
-  "description": "Dead Time Analytics for port terminals — real-time operational intelligence for Zeebrugge and beyond",
+  "description": "Dead Time Analytics for port terminals \u2014 real-time operational intelligence for Zeebrugge and beyond",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:e2e": "npm run build && playwright test"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
@@ -29,7 +30,8 @@
     "tailwindcss": "^3.4.15",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.11.0",
-    "vite": "^6.4.5"
+    "vite": "^6.4.5",
+    "@playwright/test": "1.65.1"
   },
   "overrides": {
     "@typescript-eslint/typescript-estree": {

@@ -69,7 +69,7 @@ Er is geen centraal overzicht. Geen gedeeld overzicht van knelpunten.
 ### Contractors
 - **Ranking tabel** — gesorteerd op efficiëntiescore met trend (verbeterend / stabiel / verslechterend)
 - **Zoekfunctie** — filter op contractor naam
-- **Automatische tip** — kostenverschil tussen beste en slechtste contractor berekend
+- **Berekende vergelijking** — verschil in gemiddelde wachttijd × truckvolume × afgeleid uurtarief, inclusief formule en scenario-aannames; past zich aan de zoekselectie aan
 
 ### AI Insights (vooraf geschreven demo-aanbevelingen)
 - **Spaaroverzicht** — totaal wekelijks + jaarlijks potentieel per terminal
@@ -94,7 +94,7 @@ Er is geen centraal overzicht. Geen gedeeld overzicht van knelpunten.
 | Grafieken | Recharts |
 | Iconen | Lucide React |
 | State | React Context |
-| Deploy | Vercel |
+| Deploy | GitHub Pages |
 
 ---
 
@@ -128,7 +128,7 @@ Open [http://localhost:5173](http://localhost:5173)
 
 Havens denken in **throughput**, **minuten** en **utilization**.
 
-Zelfs een kleine optimalisatie heeft grote impact:
+Illustratieve rekenvoorbeelden, geen gemeten resultaten of gegarandeerde besparingen:
 
 | Verbetering | Impact |
 |---|---|
@@ -136,7 +136,7 @@ Zelfs een kleine optimalisatie heeft grote impact:
 | 1 bottleneck minder per shift | **−€8.400/week kosten** |
 | Lane routing optimalisatie | **€18.600/week bespaard** |
 
-PortPulse maakt dit meetbaar, zichtbaar, en herhaalbaar.
+De demo toont hoe zulke hypotheses zichtbaar en controleerbaar worden. Werkelijke besparingen vereisen gevalideerde operationele data.
 
 ---
 
@@ -152,6 +152,15 @@ Zeebrugge, België
   <sub>Gebouwd voor de logistieke cluster van Zeebrugge · Schaalbaar naar Rotterdam, Hamburg, Antwerpen</sub>
 </div>
 
-## Final portfolio release
+## Earlier portfolio release
 
 [Final source snapshot — 15 November 2026](https://github.com/phlppgdfry/portpulse/releases/tag/portfolio-2026-11-15) · [Verification evidence](docs/VERIFICATION.md)
+
+
+## Portfolio refinement — 24 November 2026
+
+Contractor recommendations now compare the visible contractors using observed sample wait times, truck volume and a derived hourly rate. Empty searches explain how to recover; all alert close buttons have accessible names. The comparison is a synthetic scenario, never a guaranteed weekly saving.
+
+Browser checks run before every default-branch Pages deployment, in Chromium at 1440×1000 and 390×844. They exercise filters, empty states and actual downloads. Run `npm ci` followed by `npm run test:e2e`. CI retains the HTML report and failure traces. Mobile here means Chromium emulation, not a physical-device or Safari certification.
+
+[Current refined source release — 24 November 2026](https://github.com/phlppgdfry/portpulse/releases/tag/portfolio-2026-11-24). Browser checks also run on pull requests.

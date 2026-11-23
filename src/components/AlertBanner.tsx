@@ -27,8 +27,9 @@ export function AlertBanner() {
               <span className="text-slate-600 text-xs ml-2">+{b.waitMinutes} min · {b.affectedTrucks} trucks · sinds {b.since}</span>
             </div>
             <button
+              aria-label={`Sluit melding: ${b.location}`}
               onClick={() => setDismissed(d => [...d, b.id])}
-              className="shrink-0 text-slate-600 hover:text-slate-400 transition-colors"
+              className="shrink-0 p-2 text-slate-400 hover:text-slate-400 transition-colors"
             >
               <X size={14} />
             </button>

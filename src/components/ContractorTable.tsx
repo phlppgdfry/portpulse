@@ -33,15 +33,21 @@ function ScoreBar({ score }: { score: number }) {
 export function ContractorTable() {
   const [search, setSearch] = useState('');
   const filtered = [...contractorStats]
-    .filter(c => c.name.toLowerCase().includes(search.toLowerCase()))
+    .filter(c => c.name.toLowerCase().includes(search.trim().toLowerCase()))
     .sort((a, b) => b.score - a.score);
 
+  const byWait = [...filtered].sort((a, b) => a.avgWait - b.avgWait);
+  const best = byWait[0];
+  const worst = byWait[byWait.length - 1];
+  const gap = best && worst ? worst.avgWait - best.avgWait : 0;
+  const hours = worst ? gap * worst.trucks / 60 : 0;
+  const hourlyRate = worst?.deadTimeHours ? worst.costImpact / worst.deadTimeHours : 0;
   return (
     <div className="bg-[#111827] rounded-xl border border-white/5 p-5">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
         <div>
           <h2 className="text-sm font-semibold text-white">Contractor ranking</h2>
-          <p className="text-xs text-slate-500 mt-0.5">Efficiëntiescore op basis van wachttijd + on-time rate</p>
+          <p className="text-xs text-slate-400 mt-0.5">Illustratieve score · gemiddelde wachttijd en on-time rate</p>
         </div>
         <div className="relative">
           <Search size={12} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-500" />
@@ -70,6 +76,9 @@ export function ContractorTable() {
             </tr>
           </thead>
           <tbody className="divide-y divide-white/5">
+            {!filtered.length && <tr><td colSpan={7} className="py-8 text-center text-slate-300">
+              Geen contractors gevonden voor “{search}”. <button className="underline text-cyan-400 ml-2" onClick={() => setSearch('')}>Wis zoekopdracht</button>
+            </td></tr>}
             {filtered.map((c, i) => (
               <tr key={c.id} className="group hover:bg-white/[0.025] transition-colors">
                 <td className="py-3 pr-3 text-slate-600 font-mono">{i + 1}</td>
@@ -90,7 +99,7 @@ export function ContractorTable() {
                 </td>
                 <td className="py-3 text-right text-slate-300 hidden md:table-cell">{c.onTimeRate}%</td>
                 <td className="py-3 text-right text-slate-400 hidden lg:table-cell">€{c.costImpact.toLocaleString('nl')}</td>
-                <td className="py-3 text-center"><TrendIcon trend={c.trend} /></td>
+                <td className="py-3 text-center"><span className="inline-flex"><TrendIcon trend={c.trend} /><span className="sr-only">{c.trend === 'improving' ? 'Wachttijd verbetert' : c.trend === 'worsening' ? 'Wachttijd verslechtert' : 'Stabiel'}</span></span></td>
               </tr>
             ))}
           </tbody>
@@ -100,10 +109,13 @@ export function ContractorTable() {
       {/* Bottom insight */}
       <div className="mt-4 pt-4 border-t border-white/5 flex items-start gap-2 bg-amber-500/5 -mx-5 -mb-5 px-5 py-3 rounded-b-xl">
         <span className="text-[10px] font-bold text-amber-400 mt-0.5 shrink-0">TIP</span>
-        <p className="text-xs text-slate-400">
-          Noord Cargo BV presteert <span className="text-red-400 font-medium">62% slechter</span> dan de top contractor.
-          Vervanging bespaart <span className="text-green-400 font-medium">~€2.400/week</span> aan dead time.
-        </p>
+        <div className="text-xs text-slate-300" aria-live="polite">
+          {filtered.length >= 2 ? <>
+            <p><strong>{worst.name}</strong> wacht gemiddeld <strong>{gap} minuten langer</strong> dan {best.name}.</p>
+            <p className="mt-1">Bij {worst.trucks} trucks in deze dataset komt dat overeen met {hours.toLocaleString('nl-BE', {maximumFractionDigits: 1})} uur en een gemodelleerde tijdwaarde van <strong>€{Math.round(hours * hourlyRate).toLocaleString('nl-BE')}</strong>.</p>
+            <details className="mt-2 text-slate-400"><summary className="cursor-pointer">Berekening en aannames</summary><p className="mt-2">({worst.avgWait} − {best.avgWait}) min × {worst.trucks} trucks ÷ 60 × €{hourlyRate.toFixed(0)}/uur. Uurtarief afgeleid uit kosten / dead-time-uren van {worst.name}. Vergelijkt de zichtbare contractors op wachttijd. Synthetisch scenario; geen gegarandeerde besparing, weekprognose of bewijs dat vervanging dit verschil wegneemt.</p></details>
+          </> : <p>Toon minstens twee contractors om hun wachttijden te vergelijken.</p>}
+        </div>
       </div>
     </div>
   );

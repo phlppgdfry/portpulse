@@ -1,3 +1,11 @@
+# Verification — 24 November 2026
+
+Contractor recommendations now compare the visible contractors using observed sample wait times, truck volume and a derived hourly rate. Empty searches explain how to recover; all alert close buttons have accessible names. The comparison is a synthetic scenario, never a guaranteed weekly saving.
+
+Current checks: production build, functional browser flows on desktop/mobile, CSV/download contents and no uncaught browser errors. PDF source reconciliation and gate-validator checks run in their respective CI pipelines. Updated screenshots are actual renders of the production artifacts.
+
+## Earlier release evidence
+
 # Verification record
 
 Portfolio refresh · 8 November 2026
