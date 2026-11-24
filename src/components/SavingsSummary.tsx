@@ -4,7 +4,7 @@ import { useTerminal } from '../context/terminalState';
 
 export function SavingsSummary() {
   const { terminal } = useTerminal();
-  const weeklyBase  = 27000;
+  const weeklyBase  = aiInsights.filter(i => i.type === 'saving').reduce((sum, i) => sum + (i.weeklyImpactEur ?? 0), 0);
   const weekly      = Math.round(weeklyBase * terminal.factor);
   const annual      = weekly * 52;
   const fmt = (n: number) =>
@@ -17,30 +17,30 @@ export function SavingsSummary() {
       <div className="bg-gradient-to-br from-green-500/10 to-green-500/5 border border-green-500/20 rounded-xl p-5">
         <div className="flex items-center gap-2 mb-3">
           <div className="p-2 rounded-lg bg-green-500/15"><Euro size={16} className="text-green-400" /></div>
-          <span className="text-xs text-green-400 font-semibold uppercase tracking-wide">Wekelijks potentieel</span>
+          <span className="text-xs text-green-400 font-semibold uppercase tracking-wide">Weekscenario</span>
         </div>
         <p className="text-3xl font-bold text-green-400">{fmt(weekly)}</p>
-        <p className="text-xs text-slate-400 mt-1">te besparen met AI aanbevelingen</p>
+        <p className="text-xs text-slate-400 mt-1">Som van voorbeeldbedragen × terminalfactor; geen voorspelling</p>
       </div>
 
       <div className="bg-[#111827] border border-white/5 rounded-xl p-5">
         <div className="flex items-center gap-2 mb-3">
           <div className="p-2 rounded-lg bg-cyan-500/10"><TrendingDown size={16} className="text-cyan-400" /></div>
-          <span className="text-xs text-cyan-400 font-semibold uppercase tracking-wide">Jaarlijkse impact</span>
+          <span className="text-xs text-cyan-400 font-semibold uppercase tracking-wide">Jaarlijkse doorrekening</span>
         </div>
         <p className="text-3xl font-bold text-white">{fmt(annual)}</p>
-        <p className="text-xs text-slate-500 mt-1">indien alle inzichten worden toegepast</p>
+        <p className="text-xs text-slate-500 mt-1">Weekscenario × 52; geen gemeten of gegarandeerde besparing</p>
       </div>
 
       <div className="bg-[#111827] border border-white/5 rounded-xl p-5">
         <div className="flex items-center gap-2 mb-3">
           <div className="p-2 rounded-lg bg-amber-500/10"><Lightbulb size={16} className="text-amber-400" /></div>
-          <span className="text-xs text-amber-400 font-semibold uppercase tracking-wide">Snelste winst</span>
+          <span className="text-xs text-amber-400 font-semibold uppercase tracking-wide">Voorbeeldscenario</span>
         </div>
         <p className="text-sm font-semibold text-white leading-snug">
           {savings[0]?.title ?? 'Lane routing optimalisatie'}
         </p>
-        <p className="text-xs text-slate-500 mt-1">{savings[0]?.impact ?? '€18.600 / week'} · conf. {savings[0]?.confidence ?? 87}%</p>
+        <p className="text-xs text-slate-500 mt-1">{savings[0]?.impact ?? '€18.600 / week'} · illustratieve invoer</p>
       </div>
     </div>
   );

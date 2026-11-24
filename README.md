@@ -72,8 +72,8 @@ Er is geen centraal overzicht. Geen gedeeld overzicht van knelpunten.
 - **Berekende vergelijking** — verschil in gemiddelde wachttijd × truckvolume × afgeleid uurtarief, inclusief formule en scenario-aannames; past zich aan de zoekselectie aan
 
 ### AI Insights (vooraf geschreven demo-aanbevelingen)
-- **Spaaroverzicht** — totaal wekelijks + jaarlijks potentieel per terminal
-- **4 illustratieve aanbevelingen** — concreet, met impact in euro's en AI-confidence score
+- **Scenariodoorrekening** — som van de voorbeeldbedragen × terminalfactor; jaarbedrag = weekscenario × 52
+- **4 illustratieve aanbevelingen** — met expliciete aannames en illustratieve bedragen
   - Kostenbesparing: routing optimalisaties
   - Aandachtspunten: verzwakkende contractors
   - Patroon detectie: structurele pieken
@@ -111,16 +111,16 @@ Open [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## Roadmap
+## Mogelijke uitbreidingen buiten de afgeronde portfolio-demo
 
-- [ ] Supabase backend — echte real-time events via WebSockets
-- [ ] CSV import — upload exports uit TOS (NAVIS, SAP) direct inladen
-- [ ] GPS integratie — truck tracking binnen het terminal terrein
-- [ ] Multi-terminal dashboard — vergelijk 2 terminals naast elkaar
-- [ ] Mobiele app — chauffeurs melden events via QR-scan
-- [ ] Email alerts — automatische notificaties bij kritieke bottlenecks
+- Optioneel: Supabase backend — echte real-time events via WebSockets
+- Optioneel: CSV import — upload exports uit TOS (NAVIS, SAP) direct inladen
+- Optioneel: GPS integratie — truck tracking binnen het terminal terrein
+- Optioneel: Multi-terminal dashboard — vergelijk 2 terminals naast elkaar
+- Optioneel: Mobiele app — chauffeurs melden events via QR-scan
+- Optioneel: Email alerts — automatische notificaties bij kritieke bottlenecks
 - [x] CSV demonstratierapport met terminal-KPI’s en voorbeeld-events
-- [ ] PDF rapportage per shift of week
+- Optioneel: PDF rapportage per shift of week
 
 ---
 
@@ -163,4 +163,4 @@ Contractor recommendations now compare the visible contractors using observed sa
 
 Browser checks run before every default-branch Pages deployment, in Chromium at 1440×1000 and 390×844. They exercise filters, empty states and actual downloads. Run `npm ci` followed by `npm run test:e2e`. CI retains the HTML report and failure traces. Mobile here means Chromium emulation, not a physical-device or Safari certification.
 
-[Current refined source release — 24 November 2026](https://github.com/phlppgdfry/portpulse/releases/tag/portfolio-2026-11-24). Browser checks also run on pull requests.
+[Current refined source release — 24 November 2026](https://github.com/phlppgdfry/portpulse/releases/latest). Browser checks also run on pull requests.

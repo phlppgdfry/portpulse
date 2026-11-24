@@ -27,3 +27,18 @@ test('contractor evidence, empty search, accessible alerts and exported report',
   const file=await downloaded(page,()=>page.getByRole('button',{name:'Exporteer demonstratierapport als CSV'}).click());
   expect(file.name).toMatch(/\.csv$/); expect(file.data.toString()).toContain('EuroTruck');
 });
+
+test('scenario assumptions are explicit and truck filters recover from an empty selection', async ({page})=>{
+  await page.goto('/');
+  await page.getByRole('button',{name:/AI Insights/}).click();
+  await expect(page.getByText('Vooraf geschreven scenario’s · geen AI-model of operationele meting')).toBeVisible();
+  await expect(page.getByText(/^€\s*27\.000$/)).toBeVisible();
+  await expect(page.getByText('AI conf.',{exact:true})).toHaveCount(0);
+  await page.getByRole('button',{name:'Dashboard',exact:true}).click();
+  await page.getByLabel('Filter gate',{exact:true}).selectOption('Gate C');
+  await expect(page.getByText('2 van 12 trucks zichtbaar',{exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'Gereed',exact:true}).click();
+  await expect(page.getByText('Geen resultaten voor deze filter',{exact:true})).toBeVisible();
+  await page.getByRole('button',{name:'Alle',exact:true}).click();
+  await expect(page.getByText('2 van 12 trucks zichtbaar',{exact:true})).toBeVisible();
+});

@@ -78,7 +78,7 @@ export interface AiInsight {
   title: string;
   description: string;
   impact: string;
-  confidence: number;
+  weeklyImpactEur?: number;
 }
 
 export interface Kpis {

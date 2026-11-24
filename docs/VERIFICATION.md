@@ -1,3 +1,9 @@
+# Closeout audit — 24 November 2026
+
+Authored scenario assumptions are labelled inside the Insights screen. No AI confidence or measured 14-day history is claimed. Weekly totals sum the numeric saving-scenario inputs and apply the selected terminal factor; annual totals multiply by 52.
+
+4 Chromium browser checks passed across 1440×1000 desktop and 390×844 mobile emulation. No uncaught page errors or horizontal page overflow were observed. The full five-project set contains 20 browser checks. Current npm audit: zero known vulnerabilities. Local Markdown links resolve. Browser plugin not available; validation used Playwright. Physical devices, Safari and production terminal/ERP integrations are outside this synthetic portfolio acceptance scope.
+
 # Verification — 24 November 2026
 
 Contractor recommendations now compare the visible contractors using observed sample wait times, truck volume and a derived hourly rate. Empty searches explain how to recover; all alert close buttons have accessible names. The comparison is a synthetic scenario, never a guaranteed weekly saving.

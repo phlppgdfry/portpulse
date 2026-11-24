@@ -13,8 +13,8 @@ export function AiInsights() {
       <div className="flex items-center gap-2 mb-5">
         <Sparkles size={15} className="text-cyan-400" />
         <div>
-          <h2 className="text-sm font-semibold text-white">AI aanbevelingen</h2>
-          <p className="text-xs text-slate-500 mt-0.5">Gebaseerd op 14 dagen operationele data · {aiInsights.length} nieuwe inzichten</p>
+          <h2 className="text-sm font-semibold text-white">Illustratieve aanbevelingen</h2>
+          <p className="text-xs text-slate-500 mt-0.5">Vooraf geschreven scenario’s · geen AI-model of operationele meting</p>
         </div>
       </div>
 
@@ -28,26 +28,18 @@ export function AiInsights() {
                   {cfg.icon}
                   <span className={`text-[10px] font-bold tracking-widest ${cfg.labelColor}`}>{cfg.label}</span>
                 </div>
-                <div className="flex items-center gap-1 shrink-0">
-                  <span className="text-[10px] text-slate-500">AI conf.</span>
-                  <span className="text-[10px] font-bold text-slate-300">{insight.confidence}%</span>
-                </div>
+
               </div>
               <h3 className="text-sm font-semibold text-white mb-1.5">{insight.title}</h3>
               <p className="text-xs text-slate-400 leading-relaxed mb-3">{insight.description}</p>
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-slate-600 uppercase tracking-wide">Potentieel</span>
+                  <span className="text-[10px] text-slate-600 uppercase tracking-wide">Scenario-aanname</span>
                   <p className={`text-sm font-bold ${insight.type === 'saving' ? 'text-green-400' : insight.type === 'warning' ? 'text-amber-300' : 'text-violet-400'}`}>
                     {insight.impact}
                   </p>
                 </div>
-                <div className="h-1.5 w-24 bg-white/5 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full rounded-full ${insight.type === 'saving' ? 'bg-green-500' : insight.type === 'warning' ? 'bg-amber-500' : 'bg-violet-500'}`}
-                    style={{ width: `${insight.confidence}%` }}
-                  />
-                </div>
+
               </div>
             </div>
           );
